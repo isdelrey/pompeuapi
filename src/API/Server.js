@@ -9,7 +9,7 @@ export default class {
         Routes(this.server)
     }
     start() {
-        this.server.listen(80, () => {
+        this.server.listen(8080, () => {
             console.log('%s listening at %s', this.server.name, this.server.url)
           });
     }
