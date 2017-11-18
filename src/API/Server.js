@@ -6,6 +6,12 @@ export default class {
         this.server = Restify.createServer()
         this.server.use(Restify.plugins.queryParser())
         this.server.use(Restify.plugins.bodyParser())
+        this.server.use(function (req, res, next) {
+            if(req.query.token == process.env.TOKEN)
+                return next();
+            else
+                res.send(403)
+        });
         Routes(this.server)
     }
     start() {
