@@ -1,7 +1,7 @@
 import Mongoose from 'mongoose'
 var Storage = {};
 
-Mongoose.connect(process.env.DATABASE_URL, {
+Mongoose.connect(process.env.MONGO_URL, {
     useMongoClient: true
 })
 Mongoose.Promise = global.Promise
