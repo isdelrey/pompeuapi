@@ -15,7 +15,7 @@ export default class {
         Routes(this.server)
     }
     start() {
-        this.server.listen(8080, () => {
+        this.server.listen(process.env.PORT, () => {
             console.log('%s listening at %s', this.server.name, this.server.url)
           });
     }
