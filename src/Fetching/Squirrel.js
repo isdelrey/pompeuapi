@@ -18,8 +18,8 @@ export default class {
             headless: true,
             launchChrome: false,
             chrome: {
-              host: 'localhost',
-              port: 9222,
+              host: process.env.CHROME_HOST,
+              port: process.env.CHROME_PORT,
               remote: true,
             },
             browserlog: true
