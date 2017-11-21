@@ -241,7 +241,8 @@ export default (server) => {
         next()
     })
     server.get('/schedule/now', async (req, res, next) => {
-        let in5min = new Date().getTime() + 300000
+        let now = process.env.STATE ? new Date().getTime() : req.query.now,
+            in5min = now + 300000
         Storage.User.find()
         .select("username schedule.raw")
         .then((users) => {
@@ -254,7 +255,7 @@ export default (server) => {
                         schedule: []
                     }
                     for(let entry of user.schedule.raw) {
-                        if(entry.start <= in5min && entry.end >= in5min) {
+                        if(entry.start <= in5min && entry.start > now) {
                             let start = new Date(entry.start)
                             let end = new Date(entry.end)
                             entry.start = start.getHours() + ":" + start.getMinutes()
