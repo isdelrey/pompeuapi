@@ -256,6 +256,7 @@ export default (server) => {
                         schedule: []
                     }
                     for(let entry of user.schedule.raw) {
+                        console.log(entry.start)
                         if(entry.start <= in5min && entry.start > now) {
                             let start = new Date(entry.start)
                             let end = new Date(entry.end)
