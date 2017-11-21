@@ -242,7 +242,7 @@ export default (server) => {
     })
     server.get('/schedule/now', async (req, res, next) => {
         let response = []
-        let now = process.env.STATE ? new Date().getTime() : req.query.now,
+        let now = process.env.STATE ? new Date().getTime() : parseInt(req.query.now),
             in5min = now + 300000
         Storage.User.find()
         .select("username schedule.raw")
