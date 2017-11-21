@@ -241,6 +241,7 @@ export default (server) => {
         next()
     })
     server.get('/schedule/now', async (req, res, next) => {
+        let response = []
         let now = process.env.STATE ? new Date().getTime() : req.query.now,
             in5min = now + 300000
         Storage.User.find()
