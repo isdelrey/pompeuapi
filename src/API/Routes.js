@@ -244,13 +244,14 @@ export default (server) => {
         let response = []
         let now = process.env.STATE ? new Date().getTime() : parseInt(req.query.now),
             in5min = now + 300000
-        Storage.User.find()
+        Storage.User.find(null)
         .select("username schedule.raw")
         .then((users) => {
             if(users.length == 0)
                 res.send(404)
             else {
                 for(let user of users) {
+                    console.log(user.username)
                     let piece = {
                         username: user.username,
                         schedule: []
