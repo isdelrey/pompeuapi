@@ -242,9 +242,7 @@ export default (server) => {
     })
     server.get('/schedule/now', async (req, res, next) => {
         let in5min = new Date().getTime() + 300000
-        Storage.User.find({
-            username: req.params.username
-        })
+        Storage.User.find()
         .select("username schedule.raw")
         .then((users) => {
             if(users.length == 0)
@@ -261,10 +259,10 @@ export default (server) => {
                             let end = new Date(entry.end)
                             entry.start = start.getHours() + ":" + start.getMinutes()
                             entry.end = end.getHours() + ":" + end.getMinutes()
-                            piece.push(entry)
+                            piece.schedule.push(entry)
                         }
                     }
-                    if(piece.length > 0)
+                    if(piece.schedule.length > 0)
                         response.push(piece)
                 }
                 res.send(200, response)
