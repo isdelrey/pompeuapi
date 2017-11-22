@@ -253,6 +253,7 @@ export default (server) => {
                 res.send(404)
             else {
                 for(let user of users) {
+                    console.log("Checking - chat_id: " + user.chat_id)
                     let piece = {
                         chat_id: user.chat_id,
                         schedule: []
