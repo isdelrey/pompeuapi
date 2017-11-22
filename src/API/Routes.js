@@ -246,7 +246,9 @@ export default (server) => {
             in5min = now + 300000
         console.log("STATE: " + process.env.STATE)
         console.log("now: " + now)
-        Storage.User.find(null)
+        Storage.User.find({
+            subscribed: true
+        })
         .select("chat_id schedule.raw")
         .then((users) => {
             if(users.length == 0)
