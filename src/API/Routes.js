@@ -247,20 +247,17 @@ export default (server) => {
         console.log("STATE: " + process.env.STATE)
         console.log("now: " + now)
         Storage.User.find(null)
-        .select("username schedule.raw")
+        .select("chat_id schedule.raw")
         .then((users) => {
             if(users.length == 0)
                 res.send(404)
             else {
                 for(let user of users) {
-                    console.log("Checking - chat_id: " + user.chat_id)
                     let piece = {
                         chat_id: user.chat_id,
                         schedule: []
                     }
                     for(let entry of user.schedule.raw) {
-                        console.log(entry.start + "<=" + in5min)
-                        console.log(entry.start + " > " + now)
                         console.log(".")
                         if(entry.start <= in5min && entry.start > now) {
                             let start = new Date(entry.start)
