@@ -242,7 +242,7 @@ export default (server) => {
     })
     server.get('/schedule/now', async (req, res, next) => {
         let response = []
-        let now = process.env.STATE != "true" ? new Date().getTime() : parseInt(req.query.now),
+        let now = process.env.STATE != "true" ? new Date().getTime() + new Date().getTimezoneOffset() : parseInt(req.query.now),
             in5min = now + 300000
         console.log("STATE: " + process.env.STATE)
         console.log("now: " + now)
