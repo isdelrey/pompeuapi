@@ -254,7 +254,7 @@ export default (server) => {
             else {
                 for(let user of users) {
                     let piece = {
-                        username: user.username,
+                        chat_id: user.chat_id,
                         schedule: []
                     }
                     for(let entry of user.schedule.raw) {
