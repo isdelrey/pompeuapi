@@ -253,7 +253,6 @@ export default (server) => {
                 res.send(404)
             else {
                 for(let user of users) {
-                    console.log(user.username)
                     let piece = {
                         username: user.username,
                         schedule: []
