@@ -115,6 +115,15 @@ export default (server) => {
             console.log(err)
         }
     })
+    server.get('/feed', async (req, res, next) => {
+        try {
+            Feed.all()
+            res.send(200)
+        }
+        catch(err) {
+            console.log(err)
+        }
+    })
     server.get('/users/:username/schedule/today', async (req, res, next) => {
         let response = []
         let day_start = new Date().getTime()
