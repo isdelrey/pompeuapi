@@ -10,12 +10,12 @@ let forSingle = async (squirrel, user) => {
     })
     Storage.User.update({
         _id: user._id
-    }, {
+    }, { $set: {
         schedule: {
             raw: result.raw,
             image: result.image
         }
-    })
+    }})
     .then(() => {
         console.log("+ Saved")
     })
